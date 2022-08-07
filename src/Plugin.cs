@@ -140,6 +140,7 @@ namespace LualtsCameraMod
                     shoulderCamera.transform.SetParent(null);
                     isRightHand = !isRightHand;
                     camera.SetActive(true);
+                    isRightHand = !isRightHand;
                 }
                 // Make camera first person
                 else if (buttonY)

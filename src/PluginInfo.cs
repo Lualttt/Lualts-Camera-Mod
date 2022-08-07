@@ -4,6 +4,6 @@
     {
         public const string GUID = "com.lualt.gorillatag.lualtscameramod";
         public const string Name = "Lualts Camera Mod";
-        public const string Version = "1.0.0";
+        public const string Version = "1.0.1";
     }
 }
