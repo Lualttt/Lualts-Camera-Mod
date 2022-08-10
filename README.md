@@ -4,7 +4,7 @@ This is an improved version of Wryser's GoPro mod with some cool extra modes.
 If you want to use this as a base mod just credit me or ask me so you dont have to credit.
 Pull request are open so if you find bugs or want to add stuf go ahead!
 
-[garbage video](https://youtu.be/92bYNLBjvlE)
+[garbage instalation video](https://youtu.be/92bYNLBjvlE)
 
 [base mod](https://github.com/wryser/Wrysers-GoPro)
 
