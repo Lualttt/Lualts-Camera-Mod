@@ -24,7 +24,7 @@ namespace BodhiDonselaar
 		{
 			if (equi == null)
 			{
-				var str = Assembly.GetExecutingAssembly().GetManifestResourceStream("Lualts_Camera_Mod.Resources.lcm-equi-shader");
+				var str = Assembly.GetExecutingAssembly().GetManifestResourceStream("Lualts-Camera-Mod.Resources.lcm-equi-shader");
 				if (str == null)
 				    return;
 
