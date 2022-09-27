@@ -1,5 +1,7 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.IO;
+using System.Reflection;
+
 namespace BodhiDonselaar
 {
 	[RequireComponent(typeof(Camera))]
@@ -22,9 +24,16 @@ namespace BodhiDonselaar
 		{
 			if (equi == null)
 			{
-				ab = AssetBundle.LoadFromFile(Directory.GetCurrentDirectory() + "/BepInEx/plugins/Lualts Camera Mod/lcm-equi-shader");
-				equi = new Material(ab.LoadAsset<Shader>("EquiCam"));
-				ab.Unload(false);
+                var str = Assembly.GetExecutingAssembly().GetManifestResourceStream("Lualts_Camera_Mod.Resources.lcm-equi-shader");
+                if (str == null)
+                    return;
+
+                var bundle = AssetBundle.LoadFromStream(str);
+                if (bundle == null)
+                    return;
+
+				equi = new Material(bundle.LoadAsset<Shader>("EquiCam"));
+				bundle.Unload(false);
 			}
 
 			child = new GameObject();
