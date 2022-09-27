@@ -24,13 +24,13 @@ namespace BodhiDonselaar
 		{
 			if (equi == null)
 			{
-                var str = Assembly.GetExecutingAssembly().GetManifestResourceStream("Lualts_Camera_Mod.Resources.lcm-equi-shader");
-                if (str == null)
-                    return;
+				var str = Assembly.GetExecutingAssembly().GetManifestResourceStream("Lualts_Camera_Mod.Resources.lcm-equi-shader");
+				if (str == null)
+				    return;
 
-                var bundle = AssetBundle.LoadFromStream(str);
-                if (bundle == null)
-                    return;
+				var bundle = AssetBundle.LoadFromStream(str);
+				if (bundle == null)
+				    return;
 
 				equi = new Material(bundle.LoadAsset<Shader>("EquiCam"));
 				bundle.Unload(false);
