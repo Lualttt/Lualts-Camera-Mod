@@ -12,7 +12,6 @@ namespace BodhiDonselaar
 		private RenderTexture cubemap;
 		private Camera cam;
 		private GameObject child;
-		private AssetBundle ab;
 		public enum Size
 		{
 			High = 2048,
