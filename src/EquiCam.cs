@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using System.IO;
 using System.Reflection;
 
@@ -23,13 +23,13 @@ namespace BodhiDonselaar
 		{
 			if (equi == null)
 			{
-				var str = Assembly.GetExecutingAssembly().GetManifestResourceStream("Lualts-Camera-Mod.Resources.lcm-equi-shader");
+				var str = Assembly.GetExecutingAssembly().GetManifestResourceStream("lu_gtag_camera.Resources.lcm-equi-shader");
 				if (str == null)
-				    return;
+					return;
 
 				var bundle = AssetBundle.LoadFromStream(str);
 				if (bundle == null)
-				    return;
+					return;
 
 				equi = new Material(bundle.LoadAsset<Shader>("EquiCam"));
 				bundle.Unload(false);
@@ -47,7 +47,6 @@ namespace BodhiDonselaar
 		}
 		void OnDisable()
 		{
-			ab.Unload(true);
 			if (child != null) DestroyImmediate(child);
 			if (cubemap != null)
 			{

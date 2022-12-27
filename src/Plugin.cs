@@ -1,4 +1,4 @@
-using BepInEx;
+﻿using BepInEx;
 using System;
 using UnityEngine;
 using UnityEngine.XR;
@@ -52,8 +52,8 @@ namespace LualtsCameraMod
         void OnGameInitialized(object sender, EventArgs e)
         {
             // Get locations
-            Rhand = GameObject.Find("palm.01.R");
-            Lhand = GameObject.Find("palm.01.L");
+            Rhand = GameObject.Find("Global/Local VRRig/Local Gorilla Player/rig/body/shoulder.R/upper_arm.R/forearm.R/hand.R/palm.01.R");
+            Lhand = GameObject.Find("Global/Local VRRig/Local Gorilla Player/rig/body/shoulder.L/upper_arm.L/forearm.L/hand.L/palm.01.L");
             shoulderCamera = GameObject.Find("Shoulder Camera");
 
             // Makes camera object
@@ -102,7 +102,8 @@ namespace LualtsCameraMod
                 canLock = false;
                 InputDevices.GetDeviceAtXRNode(lNode).SendHapticImpulse(0, 1f, 3f);
                 InputDevices.GetDeviceAtXRNode(rNode).SendHapticImpulse(0, 1f, 3f);
-            } else if (triggerL == 0f && triggerR == 0f && !canLock)
+            }
+            else if (triggerL == 0f && triggerR == 0f && !canLock)
             {
                 canLock = true;
                 InputDevices.GetDeviceAtXRNode(lNode).SendHapticImpulse(0, 1f, 3f);
