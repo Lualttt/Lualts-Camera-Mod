@@ -1,0 +1,10 @@
+maybe its best if we mostly write it from scratch not sure about that tho
+
+ • Stabilization Settings
+ • In-Hand camera
+ • Ability to go in first person
+ • FOV Changer
+ • Properties of a “Gimbal Camera”
+ • And if possible, a way to place the camera in the world around you and lock into your Monke, so no matter where you are it Will follow your movements from the spot it was placed.
+ • Camera Model
+ • Small screen to see where you are looking at.
