@@ -146,9 +146,10 @@ namespace LualtsCameraMod
                 // Make camera first person
                 else if (buttonY)
                 {
-                    shoulderCamera.transform.SetParent(Camera.main.transform);
-                    shoulderCamera.transform.localPosition = new Vector3(0.0f, 0.0f, 0.0f);
-                    shoulderCamera.transform.localRotation = Quaternion.Euler(0f, 0f, 0f);
+                    //shoulderCamera.transform.SetParent(Camera.main.transform);
+                    //shoulderCamera.transform.localPosition = new Vector3(0.0f, 0.0f, 0.0f);
+                    //shoulderCamera.transform.localRotation = Quaternion.Euler(0f, 0f, 0f);
+                    shoulderCamera.transform.position = Vector3.Lerp(shoulderCamera.transform.position, Camera.main.transform.position, 0.6f);
                     camera.SetActive(false);
                     isRightHand = !isRightHand;
                 }
