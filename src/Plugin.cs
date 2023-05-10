@@ -20,17 +20,6 @@ namespace LualtsCameraMod
         GameObject Rhand;
         GameObject Lhand;
 
-        // Buttons
-        bool buttonB;
-        bool buttonA;
-        bool buttonY;
-        bool buttonX;
-        Vector2 joyL;
-        bool joyLC;
-        bool joyRC;
-        float triggerL;
-        float triggerR;
-
         // Camera
         GameObject shoulderCamera;
         Camera cameraComponent;
@@ -85,25 +74,16 @@ namespace LualtsCameraMod
 
         void FixedUpdate()
         {
-            // Map buttons to variables
-            InputDevices.GetDeviceAtXRNode(rNode).TryGetFeatureValue(UnityEngine.XR.CommonUsages.primaryButton, out buttonB);
-            InputDevices.GetDeviceAtXRNode(rNode).TryGetFeatureValue(UnityEngine.XR.CommonUsages.secondaryButton, out buttonA);
-            InputDevices.GetDeviceAtXRNode(rNode).TryGetFeatureValue(UnityEngine.XR.CommonUsages.primary2DAxisClick, out joyRC);
-            InputDevices.GetDeviceAtXRNode(rNode).TryGetFeatureValue(UnityEngine.XR.CommonUsages.trigger, out triggerR);
-            InputDevices.GetDeviceAtXRNode(lNode).TryGetFeatureValue(UnityEngine.XR.CommonUsages.primaryButton, out buttonY);
-            InputDevices.GetDeviceAtXRNode(lNode).TryGetFeatureValue(UnityEngine.XR.CommonUsages.secondaryButton, out buttonX);
-            InputDevices.GetDeviceAtXRNode(lNode).TryGetFeatureValue(UnityEngine.XR.CommonUsages.primary2DAxis, out joyL);
-            InputDevices.GetDeviceAtXRNode(lNode).TryGetFeatureValue(UnityEngine.XR.CommonUsages.primary2DAxisClick, out joyLC);
-            InputDevices.GetDeviceAtXRNode(lNode).TryGetFeatureValue(UnityEngine.XR.CommonUsages.trigger, out triggerL);
+            ControllerInput.UpdateInput();
 
-            if (triggerL == 1f && triggerR == 1f && canLock)
+            if (ControllerInput.LeftTriggerButton && ControllerInput.RightTriggerButton && canLock)
             {
                 locked = !locked;
                 canLock = false;
                 InputDevices.GetDeviceAtXRNode(lNode).SendHapticImpulse(0, 1f, 3f);
                 InputDevices.GetDeviceAtXRNode(rNode).SendHapticImpulse(0, 1f, 3f);
             }
-            else if (triggerL == 0f && triggerR == 0f && !canLock)
+            else if (ControllerInput.LeftTriggerButton && ControllerInput.RightTriggerButton && !canLock)
             {
                 canLock = true;
                 InputDevices.GetDeviceAtXRNode(lNode).SendHapticImpulse(0, 1f, 3f);
@@ -113,7 +93,7 @@ namespace LualtsCameraMod
             if (!locked)
             {
                 // Switch hands when B button is pressed
-                if (buttonB && canSwitchHands)
+                if (ControllerInput.RightPrimaryButton && canSwitchHands)
                 {
                     if (isRightHand)
                     {
@@ -131,12 +111,12 @@ namespace LualtsCameraMod
                     canSwitchHands = false;
                     isRightHand = !isRightHand;
                 }
-                else if (!canSwitchHands && !buttonB)
+                else if (!canSwitchHands && !ControllerInput.RightPrimaryButton)
                 {
                     canSwitchHands = true;
                 }
                 // Place camera down in the world
-                else if (buttonA)
+                else if (ControllerInput.RightSecondaryButton)
                 {
                     shoulderCamera.transform.SetParent(null);
                     isRightHand = !isRightHand;
@@ -144,7 +124,7 @@ namespace LualtsCameraMod
                     isRightHand = !isRightHand;
                 }
                 // Make camera first person
-                else if (buttonY)
+                else if (ControllerInput.LeftPrimaryButton)
                 {
                     //shoulderCamera.transform.SetParent(Camera.main.transform);
                     //shoulderCamera.transform.localPosition = new Vector3(0.0f, 0.0f, 0.0f);
@@ -154,7 +134,7 @@ namespace LualtsCameraMod
                     isRightHand = !isRightHand;
                 }
                 // Make camera third person
-                else if (buttonX)
+                else if (ControllerInput.LeftSecondaryButton)
                 {
                     shoulderCamera.transform.SetParent(Camera.main.transform);
                     shoulderCamera.transform.localPosition = new Vector3(0.0f, 0.3f, -2.0f);
@@ -165,31 +145,31 @@ namespace LualtsCameraMod
 
 
                 // Toggle 360 panorama mode
-                if (joyRC && canSwitchModes)
+                if (ControllerInput.Right2DAxisButton && canSwitchModes)
                 {
                     panorama = !panorama;
                     equi.enabled = panorama;
                     canSwitchModes = false;
                 }
-                else if (!joyRC && !canSwitchModes)
+                else if (!ControllerInput.Right2DAxisButton && !canSwitchModes)
                 {
                     canSwitchModes = true;
                 }
 
                 // Resets FOV when left joystick is pressed
-                if (joyLC)
+                if (ControllerInput.Left2DAxisButton)
                 {
                     fov = 60;
                     cameraComponent.fieldOfView = fov;
                 }
                 // Decrease FOV
-                else if (joyL.y > 0 && fov > 5)
+                else if (ControllerInput.LeftPrimary2DAxis.y > 0 && fov > 5)
                 {
                     fov--;
                     cameraComponent.fieldOfView = fov;
                 }
                 // Increase FOV
-                else if (joyL.y < 0 && fov < 160)
+                else if (ControllerInput.LeftPrimary2DAxis.y < 0 && fov < 160)
                 {
                     fov++;
                     cameraComponent.fieldOfView = fov;
