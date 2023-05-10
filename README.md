@@ -1,6 +1,6 @@
 <h1>Lualt&#39;s Camera Mod&nbsp;<u>2.0.0</u></h1>
 
-<p>A simple portable camera mod with many advanced features!</p>
+<p>A simple portable camera mod with many advanced features! Also (<a href="https://discord.gg/ZpAaDx66jA">join</a>) the Discord for help and stuff. </p>
 
 <h2>Keybinds:</h2>
 
