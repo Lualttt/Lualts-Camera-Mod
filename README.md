@@ -34,6 +34,7 @@
 <h2>Credits &amp; Legal</h2>
 
 <ul>
+	<li><u><a href="https://sketchfab.com/umezawa">Umezawa</a><u> for the GoPro model</li>
 	<li><u>Wryser</u>&nbsp;for the base mod (<a href="https://github.com/wryser/Wrysers-GoPro">here</a>)</li>
 	<li><u>Bodhid</u>&nbsp;for the 360 mod (<a href="https://github.com/bodhid/UnityEquiCam">here</a>)</li>
 	<li>This product is not affiliated with Gorilla Tag or Another Axiom LLC and is not endorsed or otherwise sponsored by Another Axiom LLC. Portions of the materials contained herein are property of Another Axiom LLC. &copy;2021 Another Axiom LLC</li>
